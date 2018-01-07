@@ -2,12 +2,11 @@ import cv2
 import sys
 
 
-def make(path="image/test6.png"):
+def make(path):
 	img = cv2.imread(path)
 	height, width, channels = img.shape
 	y = height / 6
 	x = width / 6 
-
 
 
 	for j in range(int(y)):
@@ -31,8 +30,20 @@ def make(path="image/test6.png"):
 				print("?",end="")
 		print()
 
+def look(path,x,y):
+	img = cv2.imread(path)
+	height, width, channels = img.shape
+	i = int(x)
+	j = int(y)
+
+	print("height={0} width={1} channels={2}".format(height, width, channels))
+	print("R={0[0]}({0[0]:X}) G={0[1]}({0[1]:X}) B={0[2]}({0[2]:X})".format(img[i,j]))
+
 if __name__ == '__main__':
-	img = cv2.imread(sys.argv[1])
-	dst = img[24:222, 24:222]
-	cv2.imwrite(sys.argv[1], dst)
-	make(sys.argv[1])
+	# img = cv2.imread(sys.argv[1])
+	# dst = img[24:222, 24:222]
+	# cv2.imwrite(sys.argv[1], img)
+	look(sys.argv[1],sys.argv[2],sys.argv[3])
+
+
+
